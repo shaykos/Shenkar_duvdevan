@@ -1,7 +1,9 @@
-import booksRouter from './books/books.routes.js';
+import 'dotenv/config'; //הגדרת השרת לקבלת משתני סביבה מהקובץ .env
 import express from 'express';
+import booksRouter from './books/books.routes.js';
 const PORT = 5500;
 
+//הגדרת השרת
 const server = express();
 server.use(express.json());
 server.use(express.urlencoded({ extended: true })); //תמיכה בכתובת בתווים שאינם לטיניים

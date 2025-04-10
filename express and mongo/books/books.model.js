@@ -10,7 +10,7 @@ export default class Book {
 
     static async findAll() {
         try {
-            return await getAllBooksFromDatabase(); // Simulate fetching from a database 
+            return await getAllBooksFromDatabase(); // fetching from a database 
         } catch (error) {
             throw new Error('An error occurred while fetching books.');
         }
