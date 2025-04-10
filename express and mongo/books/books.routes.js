@@ -1,5 +1,4 @@
-//TODO: getBookById, addBook, updateBook, deleteBook
-import { getBooks } from "./books.controller.js";
+import { getBooks, getBookById, addBook, updateBook, deleteBook } from "./books.controller.js";
 import { Router } from "express";
 
 const router = Router();
@@ -21,10 +20,10 @@ const router = Router();
 
 router
     .get('/', getBooks)
-    // .get('/:id', getBookById)
-    // .post('/', addBook)
-    // .put('/:id', updateBook)
-    // .delete('/:id', deleteBook);
+    .get('/:id', getBookById)
+    .post('/', addBook)
+    .put('/:id', updateBook)
+    .delete('/:id', deleteBook);
 
 // Export the router
 export default router;
