@@ -1,5 +1,5 @@
-import {getAllUsers, addUser} from './users.controller.js';
 import {Router} from 'express';
+import {getAllUsers, addUser, login} from './users.controller.js';
 
 const usersRouter = Router();
 
@@ -8,6 +8,7 @@ usersRouter
     .get('/', getAllUsers)
     // .get('/:id', getBookById)
      .post('/', addUser)
+     .post('/login', login)
     // .put('/:id', updateBook)
     // .delete('/:id', deleteBook);
 

@@ -17,6 +17,23 @@ export async function getAll() {
     }
 }
 
+export async function getUserByEmail(email) {
+    let client = null;
+    try {
+        client = await MongoClient.connect(process.env.CONNECTION_STRING);
+        const db = client.db(process.env.DB_NAME);
+        return await db.collection("Users").findOne({ email });
+    } catch (error) {
+        console.error("Error fetching user by email from database:", error);
+        throw error;
+    } finally {
+        if (client) {
+            client.close();
+        }
+    }
+}
+
+
 export async function createUser(user) {
     let client = null;
     try {
