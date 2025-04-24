@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import User from './users.model.js';
 
 export async function getAllUsers(req, res) {
@@ -25,7 +26,7 @@ export async function login(req, res) {
         const user = await User.login(email, password);
         
         if (user) {
-            res.status(200).json({ message: 'Login successful', user });
+            res.status(200).json({ message: 'Login successful', token: jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1h', algorithm: 'HS256' }) });
         } else {
             res.status(401).json({ message: 'Invalid email or password' });
         }
