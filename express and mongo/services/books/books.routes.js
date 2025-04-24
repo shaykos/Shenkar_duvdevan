@@ -1,7 +1,7 @@
 import { getBooks, getBookById, addBook, updateBook, deleteBook } from "./books.controller.js";
 import { Router } from "express";
 
-const router = Router();
+const booksRouter = Router();
 
 // // GET /books
 // router.get("/", getBooks);
@@ -18,7 +18,7 @@ const router = Router();
 // // DELETE /books/:id
 // router.delete("/:id", deleteBook);
 
-router
+booksRouter
     .get('/', getBooks)
     .get('/:id', getBookById)
     .post('/', addBook)
@@ -26,4 +26,4 @@ router
     .delete('/:id', deleteBook);
 
 // Export the router
-export default router;
+export default booksRouter;

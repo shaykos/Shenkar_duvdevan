@@ -1,0 +1,12 @@
+GET http://localhost:5500/api/users
+
+###
+
+POST http://localhost:5500/api/users 
+content-type: application/json
+
+{
+    "name": "Moses",
+    "email": "moses@god.il",
+    "password": "my_brother_is_aharon"
+}
