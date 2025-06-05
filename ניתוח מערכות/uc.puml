@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+
+actor Customer as C 
+
+rectangle ATM {
+    usecase "Insert Card" as UC1
+    usecase "Request PIN" as UC2
+    usecase "Enter PIN" as UC3
+    usecase "Validate PIN" as UC4
+}
+
+C -> UC1 : Insert Card
+
+@enduml

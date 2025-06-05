@@ -1,0 +1,48 @@
+@startuml
+
+' -> indicates a message from one participant to another
+' --> indicates a return message
+
+actor Customer as C
+participant ATM as A
+participant "Bank Server" as B
+database DB 
+
+activate A
+C -> A : Insert Card
+A -> C : Request PIN
+C --> A : Enter PIN
+activate B
+A -> B : Validate PIN
+activate DB
+B -> DB : Check PIN in Database
+DB --> B : PIN Valid/Invalid
+deactivate DB
+opt PIN INVALID 
+    B -> A : Notify Invalid PIN
+    A -> C : Display Invalid PIN Message
+end
+deactivate B
+A -> C : Request Withdrawal Amount
+C --> A : Enter Amount
+alt Amount > Customer Balance
+    activate B
+    A -> B : Check Balance
+    activate DB
+    B -> DB : Retrieve Balance from Account
+    DB --> B : Return Insufficient Balance
+    deactivate DB
+    B --> A : Return Insufficient Balance
+    A -> C : Display Insufficient Funds Message
+else Amount <= Customer Balance
+    A -> B : Process Withdrawal
+    activate DB
+    B -> DB : Deduct Amount from Account
+    DB --> B : Update Successful
+    deactivate DB
+    B -> A : Confirm Withdrawal
+    A -> C : Dispense Cash
+end
+deactivate B
+deactivate A
+@enduml
