@@ -7,8 +7,9 @@ export default function index() {
 
     async function fetchBooks() {
         try {
-            const response = await fetch('http://localhost:5500/api/books');
+            const response = await fetch('https://rn-library-server.onrender.com/api/books');
             const data = await response.json();
+            console.log('Fetched books:', data);
             setBooks(data);
         } catch (error) {
             console.error('Error fetching books:', error);

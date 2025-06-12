@@ -2,10 +2,12 @@ import 'dotenv/config'; //הגדרת השרת לקבלת משתני סביבה �
 import express from 'express';
 import booksRouter from './services/books/books.routes.js';
 import usersRouter from './services/users/users.routes.js';
+import cors from 'cors';
 const PORT = process.env.PORT || 5500;
 
 //הגדרת השרת
 const server = express();
+server.use(cors());
 server.use(express.json({limit: '50mb'}));
 server.use(express.urlencoded({ extended: true })); //תמיכה בכתובת בתווים שאינם לטיניים
 
