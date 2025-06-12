@@ -1,8 +1,9 @@
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { Button, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import Register from '../components/register';
+import Register from './components/register';
 
-export default function Index() {
+export default function index() {
   const [showLogin, setShowLogin] = useState(true);
 
   // Login state
@@ -37,7 +38,7 @@ export default function Index() {
             onChangeText={setLoginPassword}
             secureTextEntry
           />
-          <Button title="Login" onPress={() => { /* handle login */ }} />
+          <Button title="Login" onPress={() => { router.push('/(tabs)/books') }} />
         </View>
       ) : (
         <Register />
